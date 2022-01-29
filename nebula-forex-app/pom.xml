@@ -10,9 +10,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>nebula-rest-app</artifactId>
-    <name>Nebula Rest Service App</name>
-    <description>Will expose rest services for clients</description>
+    <artifactId>nebula-forex-app</artifactId>
+    <name>Nebula Forex App</name>
+    <description>Will integrate Forex calls</description>
     <version>1.0.0</version>
 
     <dependencies>

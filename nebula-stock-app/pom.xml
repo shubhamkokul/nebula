@@ -11,8 +11,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>nebula-integration-app</artifactId>
-    <name>Nebula Integration Service App</name>
-    <description>Will Integrate with external APIs</description>
+    <name>Nebula Stock App</name>
+    <description>Will Integrate Stock APIs</description>
     <version>1.0.0</version>
 
     <dependencies>

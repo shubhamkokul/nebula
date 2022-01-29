@@ -11,8 +11,8 @@
     <version>1.0.0</version>
     <modules>
         <module>nebula-core</module>
-        <module>nebula-rest-app</module>
-        <module>nebula-integration-app</module>
+        <module>nebula-stock-app</module>
+        <module>nebula-forex-app</module>
     </modules>
 
     <properties>
