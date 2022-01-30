@@ -1,5 +1,8 @@
 package com.rdx.factory.nebula.bind;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rdx.factory.nebula.service.NebulaAPIConnector;
+import com.rdx.factory.nebula.service.impl.NebulaAPIConnectorImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
@@ -12,13 +15,18 @@ import java.util.List;
 public class NebulaModule {
 
     @Bean
-    public RestTemplate getRestClient() {
+    RestTemplate getRestClient() {
         RestTemplate restClient = new RestTemplate(
                 new BufferingClientHttpRequestFactory(new SimpleClientHttpRequestFactory()));
         restClient.setInterceptors(List.of((request, body, execution) -> {
             return execution.execute(request, body);
         }));
         return restClient;
+    }
+
+    @Bean
+    ObjectMapper getObjectMapper() {
+        return new ObjectMapper();
     }
 
 }
