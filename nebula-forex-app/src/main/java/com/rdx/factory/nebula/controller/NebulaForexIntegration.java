@@ -8,8 +8,12 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class NebulaForexIntegration {
 
+    private final RestTemplate restTemplate;
+
     @Autowired
-    private RestTemplate restTemplate;
+    public NebulaForexIntegration(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @GetMapping(value = "/forex/rates")
     public String getRates() {
