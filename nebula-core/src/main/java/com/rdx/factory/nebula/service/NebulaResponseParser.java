@@ -5,7 +5,7 @@ import com.rdx.factory.nebula.exception.NebulaRequestException;
 
 import java.time.format.DateTimeFormatter;
 
-public abstract class ResponseParser<Data> {
+public abstract class NebulaResponseParser<Data> {
     protected final DateTimeFormatter SIMPLE_DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     protected final DateTimeFormatter DATE_WITH_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     protected final DateTimeFormatter DATE_WITH_SIMPLE_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
