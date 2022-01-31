@@ -10,7 +10,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 @PropertySource("classpath:nebula-forex.properties")
-public class NebulaForexConfiguration {
+public class ForexConfiguration {
 
     private static final String FOREX_SERVICE_URL="forex.service.url";
 
@@ -22,7 +22,7 @@ public class NebulaForexConfiguration {
 
 
     @Autowired
-    public NebulaForexConfiguration(Environment env) {
+    public ForexConfiguration(Environment env) {
         this.env = env;
     }
 

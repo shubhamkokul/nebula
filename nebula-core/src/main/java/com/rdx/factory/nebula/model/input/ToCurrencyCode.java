@@ -1,13 +1,11 @@
 package com.rdx.factory.nebula.model.input;
 
 import com.rdx.factory.nebula.service.NebulaAPIParameter;
+import lombok.AllArgsConstructor;
 
-public class ToCurrency implements NebulaAPIParameter {
+@AllArgsConstructor
+public class ToCurrencyCode implements NebulaAPIParameter {
     private final String toCurrency;
-
-    public ToCurrency(String toCurrency) {
-        this.toCurrency = toCurrency;
-    }
 
     @Override
     public String getKey() {

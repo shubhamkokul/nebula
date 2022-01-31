@@ -24,7 +24,7 @@ public class NebulaAPIConnectorImpl implements NebulaAPIConnector {
     }
 
     @Override
-    public String getRequest(NebulaAPIParameter... apiParameters) {
+    public String getRequest(NebulaAPIParameter... apiParameters) throws NebulaRequestException {
         String params = getParameters(apiParameters);
         try {
             URL request = new URL(baseUrl + params);
@@ -42,7 +42,7 @@ public class NebulaAPIConnectorImpl implements NebulaAPIConnector {
             }
             bufferedReader.close();
             return responseBuilder.toString();
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new NebulaRequestException("failure sending request", e);
         }
     }

@@ -1,7 +1,9 @@
-package com.rdx.factory.nebula.service.impl;
+package com.rdx.factory.nebula.model.input;
 
 import com.rdx.factory.nebula.service.NebulaAPIParameter;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public enum Function implements NebulaAPIParameter {
     // Time Series functions
     TIME_SERIES_INTRADAY("TIME_SERIES_INTRADAY"),
@@ -21,7 +23,7 @@ public enum Function implements NebulaAPIParameter {
     FX_DAILY("FX_DAILY"),
 
     // Digital Currencies functions
-    DIGITAL_CURRENCY_INTRADAY("DIGITAL_CURRENCY_INTRADAY"),
+    CRYPTO_INTRADAY("CRYPTO_INTRADAY"),
     DIGITAL_CURRENCY_DAILY("DIGITAL_CURRENCY_DAILY"),
     DIGITAL_CURRENCY_WEEKLY("DIGITAL_CURRENCY_WEEKLY"),
     DIGITAL_CURRENCY_MONTHLY("DIGITAL_CURRENCY_MONTHLY"),
@@ -84,10 +86,6 @@ public enum Function implements NebulaAPIParameter {
     HT_PHASOR("HT_PHASOR");
 
     private final String urlParameter;
-
-    Function(String urlParameter) {
-        this.urlParameter = urlParameter;
-    }
 
     @Override
     public String getKey() {
