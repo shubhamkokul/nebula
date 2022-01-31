@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>nebula-stock-app</artifactId>
+    <groupId>com.rdx.factory</groupId>
     <name>Nebula Stock App</name>
     <description>Will Integrate Stock APIs</description>
 
@@ -24,5 +25,23 @@
     <properties>
         <java.version>11</java.version>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.rdx.factory.nebula.NebulaStockApp</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

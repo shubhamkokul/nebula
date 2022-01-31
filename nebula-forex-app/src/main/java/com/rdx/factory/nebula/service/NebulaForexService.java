@@ -1,5 +1,7 @@
 package com.rdx.factory.nebula.service;
 
+import com.rdx.factory.nebula.model.output.CurrencyExchangeRateData;
+
 public interface NebulaForexService {
-    public String exchangeRate(String fromCurrencyCode, String toCurrencyCode);
+    public CurrencyExchangeRateData exchangeRate(String fromCurrencyCode, String toCurrencyCode);
 }

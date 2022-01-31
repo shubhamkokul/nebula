@@ -1,8 +1,8 @@
 package com.rdx.factory.nebula.bind;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rdx.factory.nebula.service.NebulaAPIConnector;
-import com.rdx.factory.nebula.service.impl.NebulaAPIConnectorImpl;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
@@ -26,7 +26,8 @@ public class NebulaModule {
 
     @Bean
     ObjectMapper getObjectMapper() {
-        return new ObjectMapper();
+        return new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL)
+                .registerModule(new JavaTimeModule());
     }
 
 }

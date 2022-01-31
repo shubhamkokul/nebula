@@ -3,7 +3,7 @@ package com.rdx.factory.nebula.model.input;
 import com.rdx.factory.nebula.service.NebulaAPIParameter;
 
 public class FromCurrency implements NebulaAPIParameter {
-    String fromCurrency;
+    private final String fromCurrency;
 
     public FromCurrency(String fromCurrency) {
         this.fromCurrency = fromCurrency;
