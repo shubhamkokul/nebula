@@ -4,8 +4,8 @@ import com.rdx.factory.nebula.exception.NebulaRequestException;
 import com.rdx.factory.nebula.model.input.*;
 import com.rdx.factory.nebula.model.parser.ForexCurrencyExchangeRate;
 import com.rdx.factory.nebula.model.response.ForexCurrencyExchangeRateData;
-import com.rdx.factory.nebula.model.parser.ForexIntraDayCurrencyExchangeRate;
-import com.rdx.factory.nebula.model.response.ForexIntraDayCurrencyExchangeRateData;
+import com.rdx.factory.nebula.model.parser.ForexTimeSeriesCurrencyExchangeRate;
+import com.rdx.factory.nebula.model.response.ForexTimeSeriesCurrencyExchangeRateData;
 import com.rdx.factory.nebula.service.NebulaAPIConnector;
 import com.rdx.factory.nebula.service.ForexService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +36,44 @@ public class ForexServiceImpl implements ForexService {
     }
 
     @Override
-    public ForexIntraDayCurrencyExchangeRateData IntraDayMoves(String fromCurrencyCode, String toCurrencyCode, String interval, String outputSize, String dataType) {
+    public ForexTimeSeriesCurrencyExchangeRateData intraDayMoves(String fromCurrencyCode, String toCurrencyCode, String interval, String outputSize, String dataType) {
         try {
             String json = nebulaAPIConnector.getRequest(Function.FX_INTRADAY,
                     new FromSymbol(fromCurrencyCode),
                     new ToSymbol(toCurrencyCode),
-                    getInterval(interval),
+                    getDaily(interval),
                     getOutputSize(outputSize),
                     getDataType(dataType));
-            return ForexIntraDayCurrencyExchangeRate.from(getInterval(interval), json).getIntraDayCurrencyExchangeRateData();
+            return ForexTimeSeriesCurrencyExchangeRate.from(getDaily(interval), json).getForexTimeSeriesCurrencyExchangeRateData();
         } catch (NebulaRequestException e) {
-            return new ForexIntraDayCurrencyExchangeRateData.Builder().statusCode(HttpStatus.BAD_REQUEST).errorMessage(e.getMessage()).build();
+            return new ForexTimeSeriesCurrencyExchangeRateData.Builder().statusCode(HttpStatus.BAD_REQUEST).errorMessage(e.getMessage()).build();
+        }
+    }
+
+    @Override
+    public ForexTimeSeriesCurrencyExchangeRateData dailyMoves(String fromCurrencyCode, String toCurrencyCode, String outputSize, String dataType) {
+        try {
+            String json = nebulaAPIConnector.getRequest(Function.FX_DAILY,
+                    new FromSymbol(fromCurrencyCode),
+                    new ToSymbol(toCurrencyCode),
+                    getOutputSize(outputSize),
+                    getDataType(dataType));
+            return ForexTimeSeriesCurrencyExchangeRate.from(getDaily(), json).getForexTimeSeriesCurrencyExchangeRateData();
+        } catch(NebulaRequestException e) {
+            return new ForexTimeSeriesCurrencyExchangeRateData.Builder().statusCode(HttpStatus.BAD_REQUEST).errorMessage(e.getMessage()).build();
+        }
+    }
+
+    @Override
+    public ForexTimeSeriesCurrencyExchangeRateData weeklyMoves(String fromCurrencyCode, String toCurrencyCode, String dataType) {
+        try {
+            String json = nebulaAPIConnector.getRequest(Function.FX_DAILY,
+                    new FromSymbol(fromCurrencyCode),
+                    new ToSymbol(toCurrencyCode),
+                    getDataType(dataType));
+            return ForexTimeSeriesCurrencyExchangeRate.from(getWeekly(), json).getForexTimeSeriesCurrencyExchangeRateData();
+        } catch(NebulaRequestException e) {
+            return new ForexTimeSeriesCurrencyExchangeRateData.Builder().statusCode(HttpStatus.BAD_REQUEST).errorMessage(e.getMessage()).build();
         }
     }
 }
