@@ -7,22 +7,20 @@ import com.rdx.factory.nebula.model.input.OutputSize;
 
 public class ForexRequestUtil {
 
-    public static Interval getDaily(String intervalInput) throws NebulaValidationException {
+    public static Interval getIntraDay(String intervalInput) throws NebulaValidationException {
         if (intervalInput == null) {
             throw new NebulaValidationException("Please pass in valid interval");
         }
         int interval = 5;
         try {
             interval = Integer.parseInt(intervalInput);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new NebulaValidationException("Please pass in valid interval in Integer");
         }
         if (interval <= 4)
             return Interval.ONE;
         if (interval <= 9)
             return Interval.FIVE;
-        if (interval <= 14)
-            return Interval.TEN;
         if (interval <= 29)
             return Interval.FIFTEEN;
         if (interval <= 59)
@@ -37,6 +35,10 @@ public class ForexRequestUtil {
 
     public static String getWeekly() {
         return "Weekly";
+    }
+
+    public static String getMonthly() {
+        return "Monthly";
     }
 
     public static OutputSize getOutputSize(String outputSize) throws NebulaValidationException {

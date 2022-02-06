@@ -22,7 +22,6 @@ public class NebulaAPIConnectorImpl implements NebulaAPIConnector {
         this.apiKey = apiKey;
         this.timeOut = timeOut;
     }
-
     @Override
     public String getRequest(NebulaAPIParameter... apiParameters) throws NebulaRequestException {
         String params = getParameters(apiParameters);

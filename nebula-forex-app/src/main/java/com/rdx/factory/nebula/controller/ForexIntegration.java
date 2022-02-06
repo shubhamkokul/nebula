@@ -43,9 +43,16 @@ public class ForexIntegration {
     }
 
     @GetMapping(value = "/forex/exchange/rates/weekly/{fromCurrency}/to/{toCurrency}/datatype/{dataType}")
-    public ForexTimeSeriesCurrencyExchangeRateData getDailyRates(@PathVariable String fromCurrency,
+    public ForexTimeSeriesCurrencyExchangeRateData getWeeklyRates(@PathVariable String fromCurrency,
                                                                  @PathVariable String toCurrency,
                                                                  @PathVariable String dataType) {
         return nebulaForexService.weeklyMoves(fromCurrency.toUpperCase(Locale.ROOT), toCurrency.toUpperCase(Locale.ROOT), dataType);
+    }
+
+    @GetMapping(value = "/forex/exchange/rates/monthly/{fromCurrency}/to/{toCurrency}/datatype/{dataType}")
+    public ForexTimeSeriesCurrencyExchangeRateData getMonthlyRates(@PathVariable String fromCurrency,
+                                                                 @PathVariable String toCurrency,
+                                                                 @PathVariable String dataType) {
+        return nebulaForexService.monthlyMoves(fromCurrency.toUpperCase(Locale.ROOT), toCurrency.toUpperCase(Locale.ROOT), dataType);
     }
 }

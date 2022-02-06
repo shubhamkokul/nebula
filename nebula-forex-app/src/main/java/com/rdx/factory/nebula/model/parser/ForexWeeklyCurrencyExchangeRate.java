@@ -7,8 +7,8 @@ import lombok.AllArgsConstructor;
 import java.util.Map;
 
 @AllArgsConstructor
-public class DailyCurrencyExchangeRate extends ForexResponseParser<ForexTimeSeriesCurrencyExchangeRateData> {
-    private final String daily;
+public class ForexWeeklyCurrencyExchangeRate extends ForexResponseParser<ForexTimeSeriesCurrencyExchangeRateData> {
+    private final String weekly;
 
     @Override
     ForexTimeSeriesCurrencyExchangeRateData resolve(Map<String, String> metaData, Map<String, Map<String, String>> fxData) {
@@ -17,7 +17,7 @@ public class DailyCurrencyExchangeRate extends ForexResponseParser<ForexTimeSeri
 
     @Override
     String getForexDataKey() {
-        return "Time Series FX (" + daily + ")";
+        return "Time Series FX (" + weekly + ")";
     }
 
     @Override
@@ -26,9 +26,8 @@ public class DailyCurrencyExchangeRate extends ForexResponseParser<ForexTimeSeri
                 .information(values.get("1. Information"))
                 .fromSymbol(values.get("2. From Symbol"))
                 .toSymbol(values.get("3. To Symbol"))
-                .outputSize(values.get("4. Output Size"))
-                .lastRefreshed(values.get("5. Last Refreshed"))
-                .timeZone(values.get("6. Time Zone"))
+                .lastRefreshed(values.get("4. Last Refreshed"))
+                .timeZone(values.get("5. Time Zone"))
                 .build();
     }
 }
