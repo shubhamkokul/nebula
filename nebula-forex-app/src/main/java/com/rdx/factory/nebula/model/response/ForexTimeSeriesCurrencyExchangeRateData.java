@@ -6,11 +6,11 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 
 @Getter
-public class ForexIntraDayCurrencyExchangeRateData extends NebulaResponse {
+public class ForexTimeSeriesCurrencyExchangeRateData extends NebulaResponse {
     private final ForexMetaData forexMetaData;
     private final List<NebulaTimeSeries> fxTimeSeries;
 
-    private ForexIntraDayCurrencyExchangeRateData(Builder builder) {
+    private ForexTimeSeriesCurrencyExchangeRateData(Builder builder) {
         this.forexMetaData = builder.forexMetaData;
         this.fxTimeSeries = builder.fxTimeSeries;
         this.statusCode = builder.statusCode;
@@ -43,8 +43,8 @@ public class ForexIntraDayCurrencyExchangeRateData extends NebulaResponse {
             return this;
         }
 
-        public ForexIntraDayCurrencyExchangeRateData build() {
-            return new ForexIntraDayCurrencyExchangeRateData(this);
+        public ForexTimeSeriesCurrencyExchangeRateData build() {
+            return new ForexTimeSeriesCurrencyExchangeRateData(this);
         }
     }
 }

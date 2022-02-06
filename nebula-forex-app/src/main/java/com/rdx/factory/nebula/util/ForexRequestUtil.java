@@ -7,7 +7,7 @@ import com.rdx.factory.nebula.model.input.OutputSize;
 
 public class ForexRequestUtil {
 
-    public static Interval getInterval(String intervalInput) throws NebulaValidationException {
+    public static Interval getDaily(String intervalInput) throws NebulaValidationException {
         if (intervalInput == null) {
             throw new NebulaValidationException("Please pass in valid interval");
         }
@@ -29,6 +29,14 @@ public class ForexRequestUtil {
             return Interval.THIRTY;
         else
             return Interval.SIXTY;
+    }
+
+    public static String getDaily() {
+        return "Daily";
+    }
+
+    public static String getWeekly() {
+        return "Weekly";
     }
 
     public static OutputSize getOutputSize(String outputSize) throws NebulaValidationException {
