@@ -20,6 +20,8 @@ target/
 *.iml
 *.ipr
 *.env
+*.sh
+start_source_.sh
 
 ### NetBeans ###
 /nbproject/private/
