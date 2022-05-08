@@ -18,6 +18,7 @@
         <module>nebula-core</module>
         <module>nebula-forex-app</module>
         <module>nebula-stock-app</module>
+        <module>nebula-plaid</module>
     </modules>
 
     <dependencies>
