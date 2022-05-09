@@ -12,5 +12,5 @@ public interface PlaidService {
 
     LinkTokenGetResponse getLinkToken(String linkToken);
 
-    String createAccessToken(String linkToken);
+    String createAccessToken(String publicToken);
 }

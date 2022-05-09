@@ -50,13 +50,15 @@ public class PlaidServiceImpl implements PlaidService {
             LinkTokenCreateRequest request = new LinkTokenCreateRequest()
                     .user(user)
                     .clientName("Castiel Personal App")
-                    .products(List.of(Products.AUTH))
+                    .products(List.of(Products.TRANSACTIONS))
                     .countryCodes(List.of(CountryCode.US))
                     .language("en")
+                    .webhook("https://requestb.in")
                     .accountFilters(accountFilters);
             Response<LinkTokenCreateResponse> response = plaidApi
                     .linkTokenCreate(request)
                     .execute();
+            assert response.body() != null;
             return response.body().getLinkToken();
         } catch (IOException e) {
             throw new NebulaRequestException("Error in CreateTempToken Request", e);
@@ -78,10 +80,10 @@ public class PlaidServiceImpl implements PlaidService {
     }
 
     @Override
-    public String createAccessToken(String linkToken) {
+    public String createAccessToken(String publicToken) {
         try {
             ItemPublicTokenExchangeRequest request = new ItemPublicTokenExchangeRequest()
-                    .publicToken(linkToken);
+                    .publicToken(publicToken);
             Response<ItemPublicTokenExchangeResponse> response = plaidApi
                     .itemPublicTokenExchange(request)
                     .execute();
