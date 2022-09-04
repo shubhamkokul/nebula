@@ -12,6 +12,10 @@ import org.springframework.core.env.Environment;
 @PropertySource("classpath:nebula-stock.properties")
 public class NebulaStockConfiguration {
 
+    private static final String FOREX_SERVICE_URL="base.url";
+
+    private static final String API_KEY = "api.key";
+
     private static final Integer TIMEOUT = 3000;
 
     private final Environment env;
@@ -24,6 +28,6 @@ public class NebulaStockConfiguration {
 
     @Bean
     NebulaAPIConnector getNebulaAPIConnector() {
-        return new NebulaAPIConnectorImpl("", "", TIMEOUT);
+        return new NebulaAPIConnectorImpl(env.getProperty(FOREX_SERVICE_URL), env.getProperty(API_KEY), TIMEOUT);
     }
 }
