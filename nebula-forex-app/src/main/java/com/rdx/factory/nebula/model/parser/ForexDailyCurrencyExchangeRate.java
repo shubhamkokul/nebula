@@ -1,6 +1,5 @@
 package com.rdx.factory.nebula.model.parser;
 
-import com.rdx.factory.nebula.model.input.Interval;
 import com.rdx.factory.nebula.model.response.ForexMetaData;
 import com.rdx.factory.nebula.model.response.ForexTimeSeriesCurrencyExchangeRateData;
 import lombok.AllArgsConstructor;
@@ -8,8 +7,8 @@ import lombok.AllArgsConstructor;
 import java.util.Map;
 
 @AllArgsConstructor
-public class IntraDayCurrencyExchangeRate extends ForexResponseParser<ForexTimeSeriesCurrencyExchangeRateData> {
-    private final Interval intraDay;
+public class ForexDailyCurrencyExchangeRate extends ForexResponseParser<ForexTimeSeriesCurrencyExchangeRateData> {
+    private final String daily;
 
     @Override
     ForexTimeSeriesCurrencyExchangeRateData resolve(Map<String, String> metaData, Map<String, Map<String, String>> fxData) {
@@ -18,7 +17,7 @@ public class IntraDayCurrencyExchangeRate extends ForexResponseParser<ForexTimeS
 
     @Override
     String getForexDataKey() {
-        return "Time Series FX (" + intraDay.getValue() + ")";
+        return "Time Series FX (" + daily + ")";
     }
 
     @Override
@@ -27,10 +26,9 @@ public class IntraDayCurrencyExchangeRate extends ForexResponseParser<ForexTimeS
                 .information(values.get("1. Information"))
                 .fromSymbol(values.get("2. From Symbol"))
                 .toSymbol(values.get("3. To Symbol"))
-                .lastRefreshed(values.get("4. Last Refreshed"))
-                .interval(values.get("5. Interval"))
-                .outputSize(values.get("6. Output Size"))
-                .timeZone(values.get("7. Time Zone"))
+                .outputSize(values.get("4. Output Size"))
+                .lastRefreshed(values.get("5. Last Refreshed"))
+                .timeZone(values.get("6. Time Zone"))
                 .build();
     }
 }

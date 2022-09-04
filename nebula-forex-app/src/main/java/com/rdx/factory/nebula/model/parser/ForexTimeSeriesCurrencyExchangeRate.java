@@ -1,8 +1,8 @@
 package com.rdx.factory.nebula.model.parser;
 
 import com.rdx.factory.nebula.exception.NebulaRequestException;
-import com.rdx.factory.nebula.model.input.Interval;
 import com.rdx.factory.nebula.model.response.ForexTimeSeriesCurrencyExchangeRateData;
+import com.rdx.factory.nebula.service.NebulaResponseParser;
 import lombok.Getter;
 
 @Getter
@@ -14,13 +14,7 @@ public class ForexTimeSeriesCurrencyExchangeRate {
         this.forexTimeSeriesCurrencyExchangeRateData = forexTimeSeriesCurrencyExchangeRateData;
     }
 
-    public static ForexTimeSeriesCurrencyExchangeRate from(Interval interval, String json) throws NebulaRequestException {
-        IntraDayCurrencyExchangeRate parser = new IntraDayCurrencyExchangeRate(interval);
-        return new ForexTimeSeriesCurrencyExchangeRate(parser.parseJson(json));
-    }
-
-    public static ForexTimeSeriesCurrencyExchangeRate from(String interval, String json) throws NebulaRequestException {
-        DailyCurrencyExchangeRate parser = new DailyCurrencyExchangeRate(interval);
+    public static ForexTimeSeriesCurrencyExchangeRate from(String json, NebulaResponseParser<ForexTimeSeriesCurrencyExchangeRateData> parser) throws NebulaRequestException {
         return new ForexTimeSeriesCurrencyExchangeRate(parser.parseJson(json));
     }
 }

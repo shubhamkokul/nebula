@@ -11,4 +11,7 @@ public interface ForexService {
     ForexTimeSeriesCurrencyExchangeRateData dailyMoves(String fromCurrencyCode, String toCurrencyCode, String outputSize, String dataType);
 
     ForexTimeSeriesCurrencyExchangeRateData weeklyMoves(String fromCurrencyCode, String toCurrencyCode, String dataType);
+
+    ForexTimeSeriesCurrencyExchangeRateData monthlyMoves(String fromCurrencyCode, String toCurrencyCode, String dataType);
+
 }

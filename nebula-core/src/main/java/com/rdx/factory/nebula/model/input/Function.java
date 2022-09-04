@@ -21,6 +21,8 @@ public enum Function implements NebulaAPIParameter {
     CURRENCY_EXCHANGE_RATE("CURRENCY_EXCHANGE_RATE"),
     FX_INTRADAY("FX_INTRADAY"),
     FX_DAILY("FX_DAILY"),
+    FX_WEEKLY("FX_WEEKLY"),
+    FX_MONTHLY("FX_MONTHLY"),
 
     // Digital Currencies functions
     CRYPTO_INTRADAY("CRYPTO_INTRADAY"),

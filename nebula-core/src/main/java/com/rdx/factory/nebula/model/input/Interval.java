@@ -8,7 +8,6 @@ public enum Interval implements NebulaAPIParameter {
 
     ONE("1min"),
     FIVE("5min"),
-    TEN("10min"),
     FIFTEEN("15min"),
     THIRTY("30min"),
     SIXTY("60min");
