@@ -6,6 +6,7 @@ import com.rdx.factory.nebula.service.PlaidService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class PlaidIntegration {
     }
 
     //link-development-f7b41e75-527e-46bd-80f0-4b52eed59f51
-    @GetMapping(value = "/plaid/create/link/token/{clientUserId}")
-    public String getCreateLinkToken(@PathVariable String clientUserId) {
+    @PostMapping(value = "/plaid/create/link/token/{clientUserId}")
+    public String createLinkToken(@PathVariable String clientUserId) {
         return nebulaPlaidService.createLinkToken(clientUserId);
     }
 
@@ -36,8 +37,8 @@ public class PlaidIntegration {
         return nebulaPlaidService.getLinkToken(linkToken);
     }
 
-    @GetMapping(value = "/plaid/create/access/token/{linkToken}")
-    public String getCreateAccessToken(@PathVariable String linkToken) {
-        return nebulaPlaidService.createAccessToken(linkToken);
+    @PostMapping(value = "/plaid/create/access/token/{publicToken}")
+    public String getCreateAccessToken(@PathVariable String publicToken) {
+        return nebulaPlaidService.createAccessToken(publicToken);
     }
 }

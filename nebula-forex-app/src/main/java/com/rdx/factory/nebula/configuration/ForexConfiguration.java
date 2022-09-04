@@ -12,14 +12,13 @@ import org.springframework.core.env.Environment;
 @PropertySource("classpath:nebula-forex.properties")
 public class ForexConfiguration {
 
-    private static final String FOREX_SERVICE_URL="forex.service.url";
+    private static final String FOREX_SERVICE_URL = "base.url";
 
-    private static final String API_KEY = "forex.api.key";
+    private static final String API_KEY = "api.key";
 
     private static final Integer TIMEOUT = 3000;
 
     private final Environment env;
-
 
     @Autowired
     public ForexConfiguration(Environment env) {
@@ -30,4 +29,5 @@ public class ForexConfiguration {
     NebulaAPIConnector getNebulaAPIConnector() {
         return new NebulaAPIConnectorImpl(env.getProperty(FOREX_SERVICE_URL), env.getProperty(API_KEY), TIMEOUT);
     }
+
 }
